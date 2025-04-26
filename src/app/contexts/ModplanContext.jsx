@@ -1,0 +1,160 @@
+'use client';
+
+import {createContext, useContext, useEffect, useState} from 'react';
+
+const ModplanContext = createContext();
+const LOCAL_STORAGE_KEY = "modplan";
+
+const defaultData = {
+    modules: {},
+    semesters: {
+        "1.1": {
+            year: 1,
+            semester: 1,
+            planned: true
+        },
+        "1.2": {
+            year: 1,
+            semester: 2,
+            planned: true
+        },
+        "2.1": {
+            year: 2,
+            semester: 1,
+            planned: true
+        },
+    }
+}
+
+export const ModplanProvider = ({ children }) => {
+    const [data, setData] = useState(defaultData);
+    const [isLoaded, setIsLoaded] = useState(false);
+    
+    useEffect(() => {
+        try {
+            const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (savedData) {
+                setData(JSON.parse(savedData));
+            }
+        } catch (error) {
+            console.error('Error loading data from localStorage:', error);
+        }
+        setIsLoaded(true);
+    }, []);
+
+    useEffect(() => {
+        if (isLoaded) {
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+            } catch (error) {
+                console.error('Error saving data to localStorage:', error);
+            }
+        }
+    }, [data, isLoaded]);
+
+    const updateData = (newData) => {
+        try {
+            const dataToStore = typeof newData === 'function'
+                ? newData(data)
+                : newData;
+
+            setData(dataToStore);
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(dataToStore));
+        } catch (error) {
+            console.error('Error updating data:', error);
+        }
+    };
+
+    const addSemester = (year, semester) => {
+        const key = year + "." + semester;
+
+        updateData(prev => ({
+            ...prev,
+            semesters: {
+                ...prev.semesters,
+                [key]: {
+                    year: year,
+                    semester: semester,
+                    planned: true
+                }
+            }
+        }));
+    };
+
+    const updateSemester = (key, updates) => {
+        updateData(prev => ({
+            ...prev,
+            semesters: {
+                ...prev.semesters,
+                [key]: {
+                    ...prev.semesters[key],
+                    ...updates
+                }
+            }
+        }));
+    };
+
+    const removeSemester = (semesterId) => {
+        updateData(prevData => {
+            const newModules = { ...prevData.modules };
+            const newSemesters = { ...prevData.semesters };
+
+            delete newSemesters[semesterId];
+            return {
+                modules: newModules,
+                semesters: newSemesters
+            };
+        });
+    };
+
+    const addModule = (name, grade, units, tags, semester) => {
+        updateData(prev => ({
+            ...prev,
+            modules: {
+                ...prev.modules,
+                [name]: {
+                    name: name,
+                    grade: grade,
+                    units: units,
+                    semester: semester,
+                    tags: tags
+                }
+            }
+        }));
+    };
+
+    const removeModule = (name) => {
+        updateData(prevData => {
+            const newModules = { ...prevData.modules };
+            const newSemesters = { ...prevData.semesters };
+
+            delete newModules[name];
+            return {
+                modules: newModules,
+                semesters: newSemesters
+            };
+        });
+    };
+
+    return (
+        <ModplanContext.Provider value={{
+            data,
+            setData,
+            addSemester,
+            updateSemester,
+            removeSemester,
+            addModule,
+            removeModule
+        }}>
+            {children}
+        </ModplanContext.Provider>
+    );
+};
+
+export const useModplan = () => {
+    const context = useContext(ModplanContext);
+    if (context === undefined) {
+        throw new Error('useModplan must be used within a ModplanProvider');
+    }
+    return context;
+};

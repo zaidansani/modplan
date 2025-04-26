@@ -1,0 +1,56 @@
+{
+  "modules": {
+    "CS1101S": {
+      "name": "CS1101S",
+      "grade": "A+",
+      "units": 4,
+      "SU": false,
+      "tags": ["GEI"],
+      "semester": [
+        "1.1"
+      ]
+    },
+    "CS1231S": {
+      "name": "CS1231S",
+      "grade": "B+",
+      "units": 4,
+      "SU": true,
+      "tags": ["CFM"],
+      "semester": [
+        "1.1"
+      ]
+    },
+    "CP4101": {
+      "name": "CP4101",
+      "grade": "A",
+      "units": 12,
+      "SU": false,
+      "tags": ["B&D"],
+      "semester": [
+        "1.1", "1.2"
+      ]
+    },
+    "CS2030S": {
+      "name": "CS2030S",
+      "grade": "A",
+      "units": 4,
+      "tags": ["CFM"],
+      "SU": false,
+      "semester": [
+        "1.1"
+      ]
+    }
+  },
+  "semesters": {
+    "1.1": {
+      "year": "1",
+      "semester": "1",
+      "completed": true
+    },
+    "1.2": {
+      "year":  "1",
+      "semester": "2",
+      "completed": false
+    }
+  }
+}
