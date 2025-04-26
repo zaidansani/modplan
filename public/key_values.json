@@ -64,6 +64,16 @@
       "score": 0,
       "units": 0,
       "color": "bg-red-100 text-red-800 border-red-800"
+    },
+    "CS": {
+      "score": 0,
+      "units": 0,
+      "color": "bg-green-100 text-green-800 border-green-800"
+    },
+    "CU": {
+      "score": 0,
+      "units": 0,
+      "color": "bg-red-100 text-red-800 border-red-800"
     }
   },
   "honours": {

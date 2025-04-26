@@ -74,8 +74,8 @@ export const ModplanProvider = ({ children }) => {
             semesters: {
                 ...prev.semesters,
                 [key]: {
-                    year: year,
-                    semester: semester,
+                    year: parseInt(year),
+                    semester: parseInt(semester),
                     planned: true
                 }
             }
@@ -116,7 +116,7 @@ export const ModplanProvider = ({ children }) => {
                 [name]: {
                     name: name,
                     grade: grade,
-                    units: units,
+                    units: parseInt(units),
                     semester: semester,
                     tags: tags
                 }
