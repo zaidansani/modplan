@@ -11,6 +11,12 @@ const TagStats = ({additionalClassName}) => {
     const [tags, setTags] = useState(getAllTags());
     const [colorMap, setColorMap] = useState(getTagColorMap());
 
+    const getUnitCount = (tag) => {
+        return Object.values(data.modules)
+            .filter(m => m.tags.includes(tag))
+            .reduce((a,b) => a+b.units, 0)
+    }
+
     useEffect(() => {
         setTags(getAllTags());
         setColorMap(getTagColorMap());
@@ -30,7 +36,8 @@ const TagStats = ({additionalClassName}) => {
             <CardDescription>
                 <div className={"flex flex-wrap gap-4"}>
                 {
-                    tags.map(tag =>
+                    tags.sort((a,b) => getUnitCount(b) - getUnitCount(a))
+                        .map(tag =>
                         <div key={tag}
                              className={"flex items-center gap-1"}
                         >
@@ -41,9 +48,7 @@ const TagStats = ({additionalClassName}) => {
                                 {tag}
                             </Badge>
                             <Badge variant="outline">
-                                {Object.values(data.modules)
-                                    .filter(m => m.tags.includes(tag))
-                                    .reduce((a,b) => a+b.units, 0)} U
+                                {getUnitCount(tag)} U
                             </Badge>
                         </div>
                     )

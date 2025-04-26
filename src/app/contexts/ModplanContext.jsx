@@ -55,9 +55,31 @@ export const ModplanProvider = ({ children }) => {
 
     const updateData = (newData) => {
         try {
-            const dataToStore = typeof newData === 'function'
+            let dataToStore = typeof newData === 'function'
                 ? newData(data)
                 : newData;
+
+            dataToStore = {
+                ...dataToStore,
+                modules: Object.fromEntries(
+                    Object.entries(dataToStore.modules)
+                        // Sort modules by key name
+                        .sort(([keyA], [keyB]) => keyA.localeCompare(keyB))
+                        // Sort tags within each module
+                        .map(([key, module]) => [
+                            key,
+                            {
+                                ...module,
+                                tags: [...module.tags].sort((a, b) => a.localeCompare(b))
+                            }
+                        ])
+                ),
+                semesters: Object.fromEntries(
+                    Object.entries(dataToStore.semesters)
+                        // Sort semesters by key name
+                        .sort(([keyA], [keyB]) => keyA.localeCompare(keyB))
+                )
+            };
 
             setData(dataToStore);
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(dataToStore));
