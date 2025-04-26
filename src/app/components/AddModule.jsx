@@ -19,6 +19,7 @@ import * as React from "react"
 import SelectGrade from "@/app/components/input/SelectGrade";
 import TagInput from "@/app/components/input/TagInput";
 import MultiSelect from "@/app/components/input/MultiSelect";
+import CustomAlert from "@/app/components/reusable/CustomAlert";
 
 const AddModule = ({currentSemester}) => {
     const {data, addModule} = useModplan();
@@ -28,12 +29,47 @@ const AddModule = ({currentSemester}) => {
     const [tags, setTags] = useState([]);
     const [semester, setSemester] = useState([currentSemester]);
     const [isOpen, setIsOpen] = useState(false);
+    const [errors, setErrors] = useState({});
     const options = Object.keys(data.semesters);
 
+    const clearData = () => {
+        setName("");
+        setGrade("");
+        setUnits(4);
+        setTags([]);
+        setSemester([]);
+        setErrors({});
+    }
+
     const handleSubmit = () => {
-        addModule(name, grade, units, tags, semester);
-        setIsOpen(false);
+        if (isFormValid()) {
+            addModule(name, grade, units, tags, semester);
+            setIsOpen(false);
+            clearData();
+        }
     };
+
+    const isFormValid = () => {
+        const newErrors = {};
+        if (!name) {
+            newErrors.name = "Name is required";
+        }
+
+        if (grade === "") {
+            newErrors.grade = "Grade is required";
+        }
+
+        if (!units) {
+            newErrors.units = "Units is required";
+        }
+
+        if (semester.length === 0) {
+            newErrors.semester = "At least one semester is required";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    }
 
 
 
@@ -65,6 +101,7 @@ const AddModule = ({currentSemester}) => {
                                onChange={(e) => setName(e.target.value)}
                                className="col-span-2"/>
                     </div>
+                    <CustomAlert message={errors.name}/>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="grade" className="text-right">
                             Grade
@@ -73,6 +110,7 @@ const AddModule = ({currentSemester}) => {
                                      onGradeChange={setGrade}
                         />
                     </div>
+                    <CustomAlert message={errors.grade}/>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="units" className="text-right">
                             Units
@@ -84,6 +122,7 @@ const AddModule = ({currentSemester}) => {
                                onChange={(e) => setUnits(e.target.value)}
                                className="col-span-2"/>
                     </div>
+                    <CustomAlert message={errors.units}/>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="tags" className="text-right">
                             Tags
@@ -108,6 +147,7 @@ const AddModule = ({currentSemester}) => {
                             placeholder="Select options..."
                         />
                     </div>
+                    <CustomAlert message={errors.semester}/>
                 </div>
                 <DialogFooter>
                     <Button

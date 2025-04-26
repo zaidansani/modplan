@@ -16,6 +16,7 @@ import {Input} from "@/components/ui/input";
 import SelectGrade from "@/app/components/input/SelectGrade";
 import TagInput from "@/app/components/input/TagInput";
 import MultiSelect from "@/app/components/input/MultiSelect";
+import CustomAlert from "@/app/components/reusable/CustomAlert";
 
 const EditModule = ({moduleData}) => {
     const {data, addModule} = useModplan();
@@ -25,13 +26,38 @@ const EditModule = ({moduleData}) => {
     const [tags, setTags] = useState(moduleData.tags);
     const [semester, setSemester] = useState(moduleData.semester);
     const [isOpen, setIsOpen] = useState(false);
+    const [errors, setErrors] = useState({});
     const options = Object.keys(data.semesters);
 
+
     const handleSubmit = () => {
-        addModule(name, grade, units, tags, semester);
-        setIsOpen(false);
+        if (isFormValid()) {
+            addModule(name, grade, units, tags, semester);
+            setIsOpen(false);
+        }
     };
 
+    const isFormValid = () => {
+        const newErrors = {};
+        if (!name) {
+            newErrors.name = "Name is required";
+        }
+
+        if (grade === "") {
+            newErrors.grade = "Grade is required";
+        }
+
+        if (!units) {
+            newErrors.units = "Units is required";
+        }
+
+        if (semester.length === 0) {
+            newErrors.semester = "At least one semester is required";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    }
     return (
         <Dialog open={isOpen}
                 onOpenChange={setIsOpen}
@@ -69,6 +95,7 @@ const EditModule = ({moduleData}) => {
                         </Label>
                         <SelectGrade className="col-span-2"
                                      onGradeChange={setGrade}
+                                     grade={moduleData.grade}
                         />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -82,6 +109,7 @@ const EditModule = ({moduleData}) => {
                                onChange={(e) => setUnits(e.target.value)}
                                className="col-span-2"/>
                     </div>
+                    <CustomAlert message={errors.units}/>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="tags" className="text-right">
                             Tags
@@ -106,6 +134,7 @@ const EditModule = ({moduleData}) => {
                             placeholder="Select options..."
                         />
                     </div>
+                    <CustomAlert message={errors.semester}/>
                 </div>
                 <DialogFooter>
                     <Button

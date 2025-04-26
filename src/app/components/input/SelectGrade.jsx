@@ -4,8 +4,8 @@ import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVal
 import keyValues from "public/key_values.json"
 import {useState} from "react";
 
-const SelectGrade = ({ onGradeChange }) => {
-    const [selectedGrade, setSelectedGrade] = useState(null);
+const SelectGrade = ({ onGradeChange, grade }) => {
+    const [selectedGrade, setSelectedGrade] = useState(keyValues.grades[grade]);
 
     const handleValueChange = (value) => {
         const gradeDetails = keyValues.grades[value];
@@ -17,6 +17,7 @@ const SelectGrade = ({ onGradeChange }) => {
         <Select
             onValueChange={handleValueChange}
             value={selectedGrade?.value}
+            defaultValue={grade}
         >
             <SelectTrigger
                 className={`w-[180px] ${selectedGrade?.color || ''}`}
