@@ -36,13 +36,13 @@ const AddSemester = () => {
         if (!year) {
             newErrors.year = "Year is required";
         } else if (parseInt(year) < MIN_YEAR || parseInt(year) > MAX_YEAR) {
-            newErrors.year = "Year must be between 1 and 6";
+            newErrors.year = `Year must be between ${MIN_YEAR} and ${MAX_YEAR}`;
         }
 
         if (!semester) {
             newErrors.semester = "Semester is required";
         } else if (parseInt(semester) < MIN_SEM || parseInt(semester) > MAX_SEM) {
-            newErrors.semester = "Semester must be 1 or 2";
+            newErrors.semester = `Semester must be between ${MIN_SEM} and ${MAX_SEM}`;
         }
 
         if (checkDuplicate()) {

@@ -23,6 +23,12 @@ function getTotalGradedUnits(mods) {
         .reduce((a,b) => a + b, 0);
 }
 
+function getTotalUnits(mods) {
+    return mods.map(m => m.units)
+        .reduce((a,b) => a + b, 0);
+}
+
+
 function getGPA(mods) {
     if (getTotalGradedUnits(mods) === 0)
         return 0;
@@ -59,6 +65,7 @@ const SummaryStatistics = () => {
                     </CardTitle>
                     <CardDescription>
                         {getTotalGradedUnits(getRelevantMods(data, false))} U
+                        ({getTotalUnits(getRelevantMods(data, false))} U)
                     </CardDescription>
                 </CardContent>
             </Card>
@@ -76,6 +83,7 @@ const SummaryStatistics = () => {
                     </CardTitle>
                     <CardDescription>
                         {getTotalGradedUnits(getRelevantMods(data, true))} U
+                        ({getTotalUnits(getRelevantMods(data, true))} U)
                     </CardDescription>
                 </CardContent>
             </Card>
