@@ -4,6 +4,7 @@ import {useModplan} from '@/app/contexts/ModplanContext';
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"
 import keyValues from "public/key_values.json"
 import {defaultColor} from "@/app/utils/colors";
+import TagStats from "@/app/components/summary/TagStats";
 
 function checkModCompleted(mod, semesterData) {
     const currentSemester = new Set(mod.semester);
@@ -54,7 +55,7 @@ const SummaryStatistics = () => {
                 <CardContent>
                     <CardTitle className="text-2xl lg:text-3xl font-semibold tabular-nums">
                         {calculateGPA(data, false)
-                            .toLocaleString(0, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
+                            .toLocaleString(0, {maximumFractionDigits: 2, minimumFractionDigits: 2})}
                     </CardTitle>
                     <CardDescription>
                         {getTotalGradedUnits(getRelevantMods(data, false))} U
@@ -68,14 +69,17 @@ const SummaryStatistics = () => {
                 <CardContent>
                     <CardTitle className="text-2xl lg:text-3xl font-semibold tabular-nums">
                         {calculateGPA(data, true)
-                            .toLocaleString(0, { maximumFractionDigits: 2,
-                                minimumFractionDigits: 2 })}
+                            .toLocaleString(0, {
+                                maximumFractionDigits: 2,
+                                minimumFractionDigits: 2
+                            })}
                     </CardTitle>
                     <CardDescription>
                         {getTotalGradedUnits(getRelevantMods(data, true))} U
                     </CardDescription>
                 </CardContent>
             </Card>
+            <TagStats additionalClassName={'col-span-2'}/>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 'use client';
 
 import {createContext, useContext, useEffect, useState} from 'react';
+import {tagColors} from "@/app/utils/colors";
 
 const ModplanContext = createContext();
 const LOCAL_STORAGE_KEY = "modplan";
@@ -29,7 +30,7 @@ const defaultData = {
 export const ModplanProvider = ({ children }) => {
     const [data, setData] = useState(defaultData);
     const [isLoaded, setIsLoaded] = useState(false);
-    
+
     useEffect(() => {
         try {
             const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -136,6 +137,26 @@ export const ModplanProvider = ({ children }) => {
         });
     };
 
+    const getAllTags = () => {
+        const allTags = new Set();
+        Object.values(data.modules).forEach(module => {
+            module.tags?.forEach(tag => allTags.add(tag));
+        });
+
+        return Array.from(allTags);
+    };
+
+    const getTagColorMap = () => {
+        const uniqueTags = getAllTags();
+        const colorMap = {};
+
+        uniqueTags.forEach((tag, index) => {
+            colorMap[tag] = tagColors[index % tagColors.length];
+        });
+
+        return colorMap;
+    };
+
     return (
         <ModplanContext.Provider value={{
             data,
@@ -144,7 +165,9 @@ export const ModplanProvider = ({ children }) => {
             updateSemester,
             removeSemester,
             addModule,
-            removeModule
+            removeModule,
+            getAllTags,
+            getTagColorMap
         }}>
             {children}
         </ModplanContext.Provider>

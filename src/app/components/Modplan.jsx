@@ -3,14 +3,13 @@
 import {useModplan} from '@/app/contexts/ModplanContext';
 
 import Semester from "@/app/components/SemesterCard";
-import {getTagColorMap} from "@/app/utils/tags";
 import AddSemester from "@/app/components/AddSemester";
 import SummaryStatistics from "@/app/components/SummaryStatistics";
 
 const Modplan = () => {
 
-    const {data} = useModplan();
-    const colorMap = getTagColorMap(data.modules);
+    const {data, getTagColorMap} = useModplan();
+    const colorMap = getTagColorMap();
 
     return (
         <div className="space-y-8">
