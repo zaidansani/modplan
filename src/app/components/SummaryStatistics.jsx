@@ -19,7 +19,7 @@ function getRelevantMods(data, includePlanned) {
         .filter(m => checkModCompleted(m, data.semesters))
 }
 
-function getTotalGradedUnits(mods) {
+export function getTotalGradedUnits(mods) {
     return mods.map(m => keyValues["grades"][m.grade]["units"] * m.units)
         .reduce((a,b) => a + b, 0);
 }
@@ -30,7 +30,7 @@ function getTotalUnits(mods) {
 }
 
 
-function getGPA(mods) {
+export function getGPA(mods) {
     if (getTotalGradedUnits(mods) === 0)
         return 0;
     return mods.map(m => keyValues["grades"][m.grade]["score"] *

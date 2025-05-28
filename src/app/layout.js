@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen grid grid-rows-[1fr_auto] 
-        bg-linear-to-l from-stone-400 to-gray-300`}>
+        bg-linear-to-l from-stone-50 to-gray-50`}>
             <main className="container mx-auto max-w-8/10 px-4 py-8 w-full flex flex-col gap-8">
                 <ModplanProvider>
                     {children}
