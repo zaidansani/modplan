@@ -20,18 +20,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen grid grid-rows-[1fr_auto]`}>
-        <main className="container mx-auto max-w-4xl px-4 py-8 w-full flex flex-col gap-8"> {/* Added flex and gap here */}
-            <ModplanProvider>
-                {children}
-            </ModplanProvider>
-        </main>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen grid grid-rows-[1fr_auto] 
+        bg-linear-to-l from-stone-400 to-gray-300`}>
+            <main className="container mx-auto max-w-8/10 px-4 py-8 w-full flex flex-col gap-8">
+                <ModplanProvider>
+                    {children}
+                </ModplanProvider>
+            </main>
 
-        <footer className="bg-background border-t py-4 mt-8">
-            <div className="container mx-auto max-w-4xl px-4 text-center text-sm text-muted-foreground">
-                designed and created by @zaidansani.
-            </div>
-        </footer>
+            <footer className="bg-background border-t py-4 mt-8">
+                <div className="container mx-auto max-w-4xl px-4 text-center text-sm text-muted-foreground">
+                    designed and created by @zaidansani.
+                </div>
+            </footer>
         </body>
         </html>
     );

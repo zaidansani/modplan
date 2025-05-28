@@ -179,6 +179,27 @@ export const ModplanProvider = ({ children }) => {
         return colorMap;
     };
 
+    const encodeModplan = (modplan) => encodeURIComponent(JSON.stringify(modplan));
+
+    const decodeModplan = (encoded) => {
+        try {
+            return JSON.parse(decodeURIComponent(encoded));
+        } catch (error) {
+            console.error('Failed to decode params:', error);
+            return null;
+        }
+    }
+
+    const getSeniority = (current) => {
+        const semestersCompleted = data.semesters.filter(
+            s => s.year < current.year || s.year === current.year && s.semester === current.semester
+        )
+
+        const units = semestersCompleted
+            .map(s => Object.entries(data.modules))
+            .filter(m => m.semester.includes(m))
+            .map(m => m.units / m.semester.length)
+    }
     return (
         <ModplanContext.Provider value={{
             data,
@@ -189,7 +210,9 @@ export const ModplanProvider = ({ children }) => {
             addModule,
             removeModule,
             getAllTags,
-            getTagColorMap
+            getTagColorMap,
+            encodeModplan,
+            decodeModplan
         }}>
             {children}
         </ModplanContext.Provider>
