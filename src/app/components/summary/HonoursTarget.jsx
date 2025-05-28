@@ -21,7 +21,6 @@ const HonoursTarget = ({currentUnits, targetUnits, currentGPA}) => {
         }
     ]
 
-    console.log(currentUnits, targetUnits, currentGPA)
     return(
         <div className="w-full h-full grid grid-cols-4 md:grid-cols-4 gap-4 col-span-2">
             {classifications.map(c =>
