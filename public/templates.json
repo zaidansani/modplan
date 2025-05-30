@@ -1,0 +1,419 @@
+{
+  "Blank Slate": {
+    "modules": {},
+    "semesters": {
+      "1.1": {
+        "year": 1,
+        "semester": 1,
+        "planned": true
+      },
+      "1.2": {
+        "year": 1,
+        "semester": 2,
+        "planned": true
+      },
+      "2.1": {
+        "year": 2,
+        "semester": 1,
+        "planned": true
+      }
+    }
+  },
+  "CS 23/24": {
+    "modules": {
+      "CS1101S": {
+        "name": "CS1101S",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.1"
+        ],
+        "tags": [
+          "CORE",
+          "GEI",
+          "ULP"
+        ]
+      },
+      "CS2030S": {
+        "name": "CS2030S",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.2"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "CS2040S": {
+        "name": "CS2040S",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.2"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "CS2100": {
+        "name": "CS2100",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.1"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "CS2101": {
+        "name": "CS2101",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.1"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "CS2103T": {
+        "name": "CS2103T",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.1"
+        ],
+        "tags": [
+          "CORE",
+          "SWE"
+        ]
+      },
+      "CS2106": {
+        "name": "CS2106",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.2"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "CS2109S": {
+        "name": "CS2109S",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.2"
+        ],
+        "tags": [
+          "AI",
+          "CORE"
+        ]
+      },
+      "CS3213": {
+        "name": "CS3213",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.2"
+        ],
+        "tags": [
+          "BD",
+          "SWE"
+        ]
+      },
+      "CS3230": {
+        "name": "CS3230",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "3.1"
+        ],
+        "tags": [
+          "ALGO",
+          "CORE"
+        ]
+      },
+      "ES2660": {
+        "name": "ES2660",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.2"
+        ],
+        "tags": [
+          "GEX",
+          "ULP"
+        ]
+      },
+      "GEA1000": {
+        "name": "GEA1000",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.1"
+        ],
+        "tags": [
+          "GEA",
+          "ULP"
+        ]
+      },
+      "IS1108": {
+        "name": "IS1108",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.1"
+        ],
+        "tags": [
+          "ETHICS"
+        ]
+      },
+      "MA1521": {
+        "name": "MA1521",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.1"
+        ],
+        "tags": [
+          "MATH"
+        ]
+      },
+      "MA1522": {
+        "name": "MA1522",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.2"
+        ],
+        "tags": [
+          "MATH"
+        ]
+      },
+      "ST2334": {
+        "name": "ST2334",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.1"
+        ],
+        "tags": [
+          "MATH"
+        ]
+      }
+    },
+    "semesters": {
+      "1.1": {
+        "year": 1,
+        "semester": 1,
+        "planned": true
+      },
+      "1.2": {
+        "year": 1,
+        "semester": 2,
+        "planned": true
+      },
+      "2.1": {
+        "year": 2,
+        "semester": 1,
+        "planned": true
+      },
+      "2.2": {
+        "year": 2,
+        "semester": 2,
+        "planned": true
+      },
+      "3.1": {
+        "year": 3,
+        "semester": 1,
+        "planned": true
+      }
+    }
+  },
+  "BZA 23/24": {
+    "modules": {
+      "BT1101": {
+        "name": "BT1101",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.1"
+        ],
+        "tags": [
+          "GEA",
+          "ULP"
+        ]
+      },
+      "BT2101": {
+        "name": "BT2101",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.2"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "BT2102": {
+        "name": "BT2102",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.1"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "BT3103": {
+        "name": "BT3103",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.2"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "BT4103": {
+        "name": "BT4103",
+        "grade": "B+",
+        "units": 8,
+        "semester": [
+          "3.1",
+          "3.2"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "CS1010A": {
+        "name": "CS1010A",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.1"
+        ],
+        "tags": [
+          "GEI",
+          "ULP"
+        ]
+      },
+      "CS2030": {
+        "name": "CS2030",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.2"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "IS1108": {
+        "name": "IS1108",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.1"
+        ],
+        "tags": [
+          "ETHICS"
+        ]
+      },
+      "IS2101": {
+        "name": "IS2101",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.2"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "IS3103": {
+        "name": "IS3103",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.1"
+        ],
+        "tags": [
+          "CORE"
+        ]
+      },
+      "MA1521": {
+        "name": "MA1521",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.1"
+        ],
+        "tags": [
+          "MATH"
+        ]
+      },
+      "MA1522": {
+        "name": "MA1522",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "1.2"
+        ],
+        "tags": [
+          "MATH"
+        ]
+      },
+      "ST2334": {
+        "name": "ST2334",
+        "grade": "B+",
+        "units": 4,
+        "semester": [
+          "2.1"
+        ],
+        "tags": [
+          "MATH"
+        ]
+      }
+    },
+    "semesters": {
+      "1.1": {
+        "year": 1,
+        "semester": 1,
+        "planned": true
+      },
+      "1.2": {
+        "year": 1,
+        "semester": 2,
+        "planned": true
+      },
+      "2.1": {
+        "year": 2,
+        "semester": 1,
+        "planned": true
+      },
+      "2.2": {
+        "year": 2,
+        "semester": 2,
+        "planned": true
+      },
+      "3.1": {
+        "year": 3,
+        "semester": 1,
+        "planned": true
+      },
+      "3.2": {
+        "year": 3,
+        "semester": 2,
+        "planned": true
+      }
+    }
+  }
+}

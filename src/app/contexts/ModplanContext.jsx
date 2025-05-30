@@ -27,8 +27,9 @@ const defaultData = {
     }
 }
 
+const emptyData = {modules: {}, semesters: {}}
 export const ModplanProvider = ({ children }) => {
-    const [data, setData] = useState(defaultData);
+    const [data, setData] = useState(emptyData);
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
@@ -39,8 +40,9 @@ export const ModplanProvider = ({ children }) => {
             }
         } catch (error) {
             console.error('Error loading data from localStorage:', error);
+        } finally {
+            setIsLoaded(true);
         }
-        setIsLoaded(true);
     }, []);
 
     useEffect(() => {
@@ -52,6 +54,11 @@ export const ModplanProvider = ({ children }) => {
             }
         }
     }, [data, isLoaded]);
+
+    const isDataAvailable = () => {
+        return (Object.keys(data.semesters).length !== 0 ||
+            Object.keys(data.modules).length !== 0)
+    }
 
     const updateData = (newData) => {
         try {
@@ -212,7 +219,10 @@ export const ModplanProvider = ({ children }) => {
             getAllTags,
             getTagColorMap,
             encodeModplan,
-            decodeModplan
+            decodeModplan,
+            isDataAvailable,
+            updateData,
+            isLoaded
         }}>
             {children}
         </ModplanContext.Provider>
