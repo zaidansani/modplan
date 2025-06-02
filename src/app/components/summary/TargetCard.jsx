@@ -34,16 +34,14 @@ const TargetCard = ({currentUnits, targetUnits, currentGPA, targetGPA, title}) =
                     minimumFractionDigits: 2})})
                 </CardDescription>
             </CardHeader>
-            <CardContent className="flex-1">
-                <CardTitle>
+            <CardContent>
+                <CardTitle className="text-2xl lg:text-3xl font-semibold tabular-nums">
                     {gpa}
                 </CardTitle>
-            </CardContent>
-            <CardFooter>
                 <CardDescription>
                     required in remaining semesters.
                 </CardDescription>
-            </CardFooter>
+            </CardContent>
         </Card>
 
     )
