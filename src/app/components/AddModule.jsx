@@ -27,7 +27,7 @@ const AddModule = ({currentSemester}) => {
     const [grade, setGrade] = useState("");
     const [units, setUnits] = useState(4);
     const [tags, setTags] = useState([]);
-    const [semester, setSemester] = useState([currentSemester]);
+    const [semester, setSemester] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [errors, setErrors] = useState({});
     const options = Object.keys(data.semesters);
@@ -71,11 +71,19 @@ const AddModule = ({currentSemester}) => {
         return Object.keys(newErrors).length === 0;
     }
 
+    const handleOpenChange = (open) => {
+        setIsOpen(open);
+        if (open) {
+            setSemester([currentSemester]);
+        } else {
+            clearData();
+        }
+    }
 
 
     return (
         <Dialog open={isOpen}
-                onOpenChange={setIsOpen}
+                onOpenChange={handleOpenChange}
                 className={`flex flex-col h-full w-100`}>
             <DialogTrigger asChild>
                 <Button variant="outline"
